@@ -4,17 +4,16 @@ import 'package:app/utils/routes/utils.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../viewmodel/auth_viewmodel.dart';
 
-class Loginview extends StatefulWidget {
-  const Loginview({super.key});
+class Sginupview extends StatefulWidget {
+  const Sginupview({super.key});
 
   @override
-  State<Loginview> createState() => _LoginviewState();
+  State<Sginupview> createState() => _SginupviewState();
 }
 
-class _LoginviewState extends State<Loginview> {
+class _SginupviewState extends State<Sginupview> {
   final ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -87,7 +86,7 @@ class _LoginviewState extends State<Loginview> {
             SizedBox(height: MediaQuery.sizeOf(context).height * 0.05),
             AuthButton(
               
-                buttontext: "Login",
+                buttontext: "SginUp",
                 loading: authViewmodel.loading,
                 onPress: () {
                   if (emailController.text.isEmpty) {
@@ -105,9 +104,10 @@ class _LoginviewState extends State<Loginview> {
                       'email': emailController.text.toString(),
                       'password': passwordController.text.toString()
                     };
-                    authViewmodel.loginApi(data, headr, context);
+                    authViewmodel.SginUpApi(data, headr, context);
                   }
-                }), Text.rich(textAlign: TextAlign.center,
+                }),
+                Text.rich(textAlign: TextAlign.center,
                   TextSpan(
                     text: "Already have an account?",
                     style: TextStyle(color: Colors.black, fontSize: 16),
